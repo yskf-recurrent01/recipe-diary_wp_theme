@@ -12,21 +12,7 @@
             <h1 class="news-detail-title"><?php the_title(); ?></h1>
             <div class="news-meta">
               <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time(get_option('date_format')); ?></time>
-
-              <?php
-              $cats = get_the_category();
-              if ($cats):
-              ?>
-                <ul class="news-category">
-                  <?php foreach ($cats as $cat): ?>
-                    <li>
-                      <a href="<?php echo esc_url(home_url('/') . 'category/' . $cat->slug . '/') ?>">
-                        <?php echo $cat->name; ?>
-                      </a>
-                    </li>
-                  <?php endforeach; ?>
-                </ul>
-              <?php endif; ?>
+              <?php get_template_part('template-parts/newscats', '', array(true)); ?>
             </div>
           </header>
           <div class="news-detail-content">
@@ -39,7 +25,7 @@
     ?>
   </div>
   <div class="button-wrapper">
-    <?php get_template_part('template-parts/linkbutton','',array('news')); ?>
+    <?php get_template_part('template-parts/linkbutton', '', array('news')); ?>
   </div>
 </main>
 
