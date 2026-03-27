@@ -42,6 +42,8 @@
 |お知らせリスト|template-parts/newslist.php||
 |レシピリスト|template-parts/recipelist.php||
 |戻る系ボタン|template-parts/linkbutton.php|パラメータに行き先を設定|
+|お知らせカテゴリー|template-parts/newscats.php|パラメータで全部表示か1つだけ表示か切り替え|
+
 
 ### カテゴリー・タクソノミー設定案
 
