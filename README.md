@@ -19,19 +19,19 @@
 
 ### テンプレートファイル構成
 
-|ページ名|HTMLファイル名|テンプレートファイル名|備考|
-|:---|:---|:---|:---|
-|トップページ|index.html|front-page.php|
-|Recipe Diary について|about.html|page-about.php|
-|お知らせ|news.html|home.php|
-|お知らせカテゴリーアーカイブ|news-category.html|archive.php|
-|お知らせ詳細|news-detail.html|single.php|
-|レシピ一覧|recipe-list.html|archive-recipe.php|
-|レシピカテゴリー|recipe-category.html|taxonomy-recipe_category.php|
-|レシピ詳細|recipe-detail.html|single-recipe.php|
-|お問い合わせ|contact.html|page-contact.php|
-|プライバシーポリシー|privacy-policy.html|privacy-policy.php|
-|404|404.html|404.php|
+|ページ名|HTMLファイル名|テンプレートファイル名|備考|進捗|
+|:---|:---|:---|:---|---|
+|トップページ|index.html|front-page.php||
+|Recipe Diary について|about.html|page-about.php||
+|お知らせ|news.html|home.php|✅|
+|お知らせカテゴリーアーカイブ|news-category.html|archive.php|✅|
+|お知らせ詳細|news-detail.html|single.php|✅|
+|レシピ一覧|recipe-list.html|archive-recipe.php||
+|レシピカテゴリー|recipe-category.html|taxonomy-recipe_category.php||
+|レシピ詳細|recipe-detail.html|single-recipe.php||
+|お問い合わせ|contact.html|page-contact.php|✅|
+|プライバシーポリシー|privacy-policy.html|privacy-policy.php|✅|
+|404|404.html|404.php|✅|
 
 ### テンプレートパーツ構成
 
