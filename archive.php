@@ -18,13 +18,7 @@
       <p>お知らせはありません。</p>
     <?php endif; ?>
     <!-- Pagination -->
-    <ol class="pagination">
-      <li class="pagination-prev"><a href="#"><span>前へ</span></a></li>
-      <li class="pagination-item current"><span>1</span></li>
-      <li class="pagination-item"><a href="#"><span>2</span></a></li>
-      <li class="pagination-item"><a href="#"><span>3</span></a></li>
-      <li class="pagination-next"><a href="#"><span>次へ</span></a></li>
-    </ol>
+    <?php get_template_part('template-parts/pagination');    ?>
   </div>
   <div class="button-wrapper">
     <?php get_template_part('template-parts/linkbutton', '', array('home')); ?>
