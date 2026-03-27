@@ -1,8 +1,8 @@
 <?php get_header(); ?> <main>
   <div class="breadcrumbs-wrapper wrapper">
-    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+    <ol class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
       <?php if (function_exists('bcn_display')) bcn_display_list() ?>
-    </div>
+    </ol>
   </div>
   <div class="wrapper contact-wrapper">
     <?php if (have_posts()): while (have_posts()): the_post(); ?>
