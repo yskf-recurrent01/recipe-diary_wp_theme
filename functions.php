@@ -42,6 +42,11 @@ function register_custom_post_type()
 // 3. 関数の実行
 add_action('init', 'register_custom_post_type');
 
+function setup_theme(){
+    add_theme_support('post-thumbnails');
+}
+add_action('after_setup_theme','setup_theme');
+
 // 外部ファイルの読み込み
 function add_files()
 {
