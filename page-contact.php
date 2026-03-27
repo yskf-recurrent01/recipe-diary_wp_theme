@@ -8,10 +8,7 @@
     <?php if (have_posts()): while (have_posts()): the_post(); ?>
         <div class="contact-header">
           <h1 class="title" data-en="<?php echo $post->post_name; ?>"><?php the_title() ?></h1>
-          <p>
-            フォームからお問い合わせください。<br />
-            通常、2～3営業日以内にご返信いたします。
-          </p>
+          <?php the_content(); ?>
         </div>
     <?php endwhile;
     endif; ?>
