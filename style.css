@@ -262,6 +262,7 @@ footer {
 
 .title::before {
   content: attr(data-en);
+  text-transform: capitalize;
   font-family: 'Philosopher', sans-serif;
   font-size: 1.8em;
 }
@@ -617,6 +618,7 @@ textarea {
   border-radius: 4px;
   padding-block: 10px;
   padding-inline: 10px;
+  width: 100%;
 }
 
 textarea {
@@ -633,6 +635,16 @@ input[type='radio'] {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
+}
+
+/* contact form 7 用カスタマイズ */
+.wpcf7-radio{
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.wpcf7-list-item{
+  margin: 0;
 }
 
 /* about
