@@ -39,8 +39,9 @@
 |:---|:---|:---|
 |共通ヘッダー|header.php|トップページのみメインビジュアルを表示|
 |共通フッター|footer.php||
-|お知らせリスト|template-parts/news-list.php||
-|レシピリスト|template-parts/recipe-list.php||
+|お知らせリスト|template-parts/newslist.php||
+|レシピリスト|template-parts/recipelist.php||
+|戻る系ボタン|template-parts/linkbutton.php|パラメータに行き先を設定|
 
 ### カテゴリー・タクソノミー設定案
 
