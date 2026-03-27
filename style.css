@@ -223,6 +223,17 @@ footer {
   line-height: 1.5;
 }
 
+.breadcrumbs{
+  list-style-type: none;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.breadcrumbs li:not(:first-of-type)::before{
+  content: '>';
+  margin-inline-end: 0.5rem;
+}
+
 .breadcrumbs a {
   text-decoration: underline;
   transition: opacity 0.3s ease;
