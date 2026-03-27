@@ -2,7 +2,7 @@
 <main>
   <div class="breadcrumbs-wrapper wrapper">
     <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
-      <span><a href="./index.html">Home</a></span> &gt; <span aria-current="page">プライバシーポリシー</span>
+      <?php if (function_exists('bcn_display')) bcn_display_list() ?>
     </div>
   </div>
   <div class="wrapper">
