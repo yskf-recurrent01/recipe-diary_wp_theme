@@ -21,24 +21,26 @@
 
 |ページ名|HTMLファイル名|テンプレートファイル名|備考|
 |:---|:---|:---|:---|
-|トップページ|index.html||固定ページ|
-|Recipe Diary について|about.html||固定ページ|
-|お知らせ|news.html||投稿|
-|お知らせカテゴリーアーカイブ|news-category.html||投稿|
-|お知らせ詳細|news-detail.html||投稿|
-|<u>**レシピ一覧**</u>|recipe-list.html||カスタム投稿|
-|<u>**レシピカテゴリー**</u>|recipe-category.html||カスタム投稿|
-|<u>**レシピ詳細**</u>|recipe-detail.html|single-recipe.php|カスタム投稿|
-|お問い合わせ|contact.html||固定ページ|
-|プライバシーポリシー|privacy-policy.html||固定ページ|
-|404|404.html||固定ページ|
+|トップページ|index.html|front-page.php|
+|Recipe Diary について|about.html|page-about.php|
+|お知らせ|news.html|home.php|
+|お知らせカテゴリーアーカイブ|news-category.html|archive.php|
+|お知らせ詳細|news-detail.html|single.php|
+|レシピ一覧|recipe-list.html|archive-recipe.php|
+|レシピカテゴリー|recipe-category.html|taxonomy-recipe_category.php|
+|レシピ詳細|recipe-detail.html|single-recipe.php|
+|お問い合わせ|contact.html|page-contact.php|
+|プライバシーポリシー|privacy-policy.html|privacy-policy.php|
+|404|404.html|404.php|
 
 ### テンプレートパーツ構成
 
 |パーツ名|テンプレートパーツファイル名|備考|
 |:---|:---|:---|
-|共通ヘッダー|header.php||
+|共通ヘッダー|header.php|トップページのみメインビジュアルを表示|
 |共通フッター|footer.php||
+|お知らせリスト|template-parts/news-list.php||
+|レシピリスト|template-parts/recipe-list.php||
 
 ### カテゴリー・タクソノミー設定案
 
@@ -57,9 +59,7 @@
 
 |カテゴリー名|スラッグ|備考|
 |:---|:---|:---|
-|和食|japanese||
 |洋食|western||
-|中華|chinese||
+|和食|japanese||
 |エスニック|ethnic||
-|デザート|Desert||
 
