@@ -1,18 +1,16 @@
 <?php get_header(); ?>
 <main>
   <div class="breadcrumbs-wrapper wrapper">
-    <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <ol typeof="BreadcrumbList" vocab="https://schema.org/">
-        <?php if (function_exists('bcn_display')) bcn_display_list(); ?>
-      </ol>
-    </nav>
+    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+      <?php if (function_exists('bcn_display')) bcn_display_list(); ?>
+    </div>
   </div>
   <div class="wrapper">
     <?php if (have_posts()): while (have_posts()): the_post(); ?>
         <article class="recipe-wrapper">
           <div class="eyecatch">
             <?php if (has_post_thumbnail()): ?>
-              <img src="./img/recipe4.jpg" alt="" />
+              <?php the_post_thumbnail('large'); ?>
             <?php endif; ?>
           </div>
 
@@ -33,42 +31,28 @@
                 <?php the_content(); ?>
             </header>
             <div class="recipe-data-wrapper">
-              <h2 class="recipe-data-title">材料(2人分)</h2>
+              <h2 class="recipe-data-title">材料(<?php echo SCF::get('ingredients_people'); ?>人分)</h2>
               <dl class="ingredients-list">
-                <div class="ingredients-item">
-                  <dt>アボカド</dt>
-                  <dd>1個</dd>
-                </div>
-                <div class="ingredients-item">
-                  <dt>レンズ豆</dt>
-                  <dd>200g</dd>
-                </div>
-                <div class="ingredients-item">
-                  <dt>トマト</dt>
-                  <dd>2個</dd>
-                </div>
-                <div class="ingredients-item">
-                  <dt>ライム果汁</dt>
-                  <dd>大さじ1</dd>
-                </div>
-                <div class="ingredients-item">
-                  <dt>塩</dt>
-                  <dd>少々</dd>
-                </div>
-                <div class="ingredients-item">
-                  <dt>トルティーヤ</dt>
-                  <dd>適量</dd>
-                </div>
+                <?php
+                $ingredients_item_list = SCF::get('ingredients_item_list');
+                foreach ($ingredients_item_list as $item):
+                ?>
+                  <div class="ingredients-item">
+                    <dt><?php echo $item['ingredients_item_name']; ?></dt>
+                    <dd><?php echo $item['ingredients_item_qty']; ?></dd>
+                  </div>
+                <?php endforeach; ?>
               </dl>
             </div>
             <div class="recipe-data-wrapper">
               <h2 class="recipe-data-title">作り方</h2>
               <ol class="steps-list">
-                <li>テキストテキストテキストテキスト</li>
-                <li>テキストテキストテキストテキスト</li>
-                <li>テキストテキストテキストテキスト</li>
-                <li>テキストテキストテキストテキスト</li>
-                <li>テキストテキストテキストテキスト</li>
+                <?php
+                $steps_item_list = SCF::get('steps_item_list');
+                foreach ($steps_item_list as $item):
+                ?>
+                  <li><?php echo $item['steps_item']; ?></li>
+                <?php endforeach; ?>
               </ol>
             </div>
           </div>
@@ -78,6 +62,7 @@
     endif;
     ?>
   </div>
-  <div class="button-wrapper"><a class="button" href="./recipe-list.html">レシピ一覧に戻る</a></div>
+  <div class="button-wrapper">
+    <?php get_template_part('template-parts/linkbutton', '', array('recipe')); ?>  </div>
 </main>
 <?php get_footer(); ?>
