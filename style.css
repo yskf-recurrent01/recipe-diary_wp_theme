@@ -502,6 +502,12 @@ footer {
   gap: 0.5rem;
 }
 
+.recipe-list-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* detail
 ------------------------- */
 .eyecatch {
