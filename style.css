@@ -575,9 +575,16 @@ footer {
 
 .ingredients-item,
 .steps-list>li {
-  line-height: 1.2;
   border-bottom: 1px dotted #cccccc;
   padding-block-end: 4px;
+}
+
+.ingredients-item {
+  line-height: 1.2;
+}
+
+.steps-list>li {
+  line-height: 1.6;
 }
 
 /* contact
