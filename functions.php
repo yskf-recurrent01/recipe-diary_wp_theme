@@ -1,4 +1,5 @@
 <?php
+
 // カスタム投稿タイプ「レシピ」とカスタムタクソノミー「レシピカテゴリー」の登録
 function register_custom_post_type()
 {
@@ -46,6 +47,14 @@ function register_custom_post_type()
 // 3. 関数の実行
 add_action('init', 'register_custom_post_type');
 
+// カスタム投稿タイプ一覧ページの表示件数を設定
+function set_posts_per_page($query){
+    // 管理画面、
+    if(is_admin() || !$query->is_main_query()) return;
+    if($query->is_post_type_archive( 'recipe' )) $query->set('posts_per_page', '12');
+}
+add_action('pre_get_posts','set_posts_per_page');
+
 // レシピ個別ページのパーマリンクを変更
 function custom_recipe_permalink($post_link, $post)
 {
@@ -66,8 +75,10 @@ function add_recipe_rewrite_rule($rules)
 }
 add_filter('rewrite_rules_array', 'add_recipe_rewrite_rule');
 
+// テーマセットアップ
 function setup_theme()
 {
+    // アイキャッチ画像の有効化
     add_theme_support('post-thumbnails');
 }
 add_action('after_setup_theme', 'setup_theme');
