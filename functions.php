@@ -35,6 +35,10 @@ function register_custom_post_type()
         ],
         'taxonomies' => ['recipe_category'], // 利用するタクソノミー
         'show_in_rest' => true, // ブロックエディタを利用するかどうか
+        'rewrite' => [ // レシピ個別ページのパーマリンク設定
+            'slug' => 'recipe',
+            'with_front' => false,
+        ],
     ];
     // register_post_type('カスタム投稿タイプ名','カスタム投稿タイプの設定');
     register_post_type('recipe', $post_args);
@@ -42,10 +46,31 @@ function register_custom_post_type()
 // 3. 関数の実行
 add_action('init', 'register_custom_post_type');
 
-function setup_theme(){
+// レシピ個別ページのパーマリンクを変更
+function custom_recipe_permalink($post_link, $post)
+{
+    if ($post->post_type === 'recipe') {
+        return home_url('/recipe/' . $post->ID . '/');
+    }
+    return $post_link;
+}
+add_filter('post_type_link', 'custom_recipe_permalink', 1, 3);
+
+// パーマリンクのルールを追加
+function add_recipe_rewrite_rule($rules)
+{
+    $new_rules = [
+        'recipe/([0-9]+)/?$' => 'index.php?post_type=recipe&p=$matches[1]',
+    ];
+    return $new_rules + $rules;
+}
+add_filter('rewrite_rules_array', 'add_recipe_rewrite_rule');
+
+function setup_theme()
+{
     add_theme_support('post-thumbnails');
 }
-add_action('after_setup_theme','setup_theme');
+add_action('after_setup_theme', 'setup_theme');
 
 // 外部ファイルの読み込み
 function add_files()
