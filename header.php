@@ -26,4 +26,18 @@
         <span class="ham-line"><span class="visually-hidden">メニューを開く</span></span>
       </button>
     </div>
+    <?php if (is_front_page()): ?>
+      <div class="swiper">
+        <ul class="swiper-wrapper">
+          <?php
+          $slider_images = SCF::get('slider_images');
+          foreach ($slider_images as $item):
+          ?>
+            <li class="swiper-slide">
+              <?php echo wp_get_attachment_image($item['slider_image'],'full'); ?>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    <?php endif; ?>
   </header>

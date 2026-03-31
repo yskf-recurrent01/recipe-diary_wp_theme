@@ -48,12 +48,13 @@ function register_custom_post_type()
 add_action('init', 'register_custom_post_type');
 
 // カスタム投稿タイプ一覧ページの表示件数を設定
-function set_posts_per_page($query){
+function set_posts_per_page($query)
+{
     // 管理画面、
-    if(is_admin() || !$query->is_main_query()) return;
-    if($query->is_post_type_archive( 'recipe' )) $query->set('posts_per_page', '12');
+    if (is_admin() || !$query->is_main_query()) return;
+    if ($query->is_post_type_archive('recipe')) $query->set('posts_per_page', '12');
 }
-add_action('pre_get_posts','set_posts_per_page');
+add_action('pre_get_posts', 'set_posts_per_page');
 
 // レシピ個別ページのパーマリンクを変更
 function custom_recipe_permalink($post_link, $post)
@@ -90,9 +91,21 @@ function add_files()
     wp_enqueue_style('reset_style', 'https://unpkg.com/ress/dist/ress.min.css');
     // Google Fonts
     wp_enqueue_style('google_fonts', 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Zen+Kaku+Gothic+Antique&display=swap', array('reset_style'), null);
-    // オリジナルCSS
-    wp_enqueue_style('base_style', get_stylesheet_directory_uri() . '/style.css', array('reset_style', 'google_fonts'));
+    // Swiper
+    if (is_front_page()) {
+        wp_enqueue_style('swiper_css', 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css');
 
+        wp_enqueue_style('base_style', get_stylesheet_directory_uri() . '/style.css', array('reset_style', 'google_fonts', 'swiper_css'));
+    } else {
+        // オリジナルCSS
+        wp_enqueue_style('base_style', get_stylesheet_directory_uri() . '/style.css', array('reset_style', 'google_fonts'));
+    }
+
+    // Swiper
+    if (is_front_page()) {
+        wp_enqueue_script('swiper_js', 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js', array(), '1.0', true);
+        wp_enqueue_script('slider_js', get_stylesheet_directory_uri() . '/js/slider.js', array('swiper_js'), '1.0', true);
+    }
     // メインJS
     wp_enqueue_script('main_js', get_stylesheet_directory_uri() . '/js/script.js', array(), '1.0', true);
 }
