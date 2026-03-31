@@ -13,14 +13,19 @@ if ($slug === 'recipe') {
         'title' => 'ホーム',
         'link' => home_url('/'),
     ];
+} elseif ($slug === 'news') {
+    $btn_data = [
+        'title' => 'お知らせ一覧',
+        'link' => home_url('/') . 'news/',
+    ];
 } else {
     $to = get_page_by_path($args[0], OBJECT, 'page');
     $slug = $to->post_name;
     $btn_data = [
         'title' => $to->post_title,
-        'link' =>     $link = home_url('/') . $slug,
+        'link' =>   $link = home_url('/') . $slug .'/',
     ];
 }
 
 ?>
-<a class="button" href="<?php echo esc_url($btn_data['link']); ?>"><?php echo $btn_data['title']; ?>に戻る</a>
+<a class="button" href="<?php echo esc_url($btn_data['link']); ?>"><?php echo $btn_data['title']; ?><?php echo (is_front_page()) ? 'を見る' : 'に戻る'; ?></a>

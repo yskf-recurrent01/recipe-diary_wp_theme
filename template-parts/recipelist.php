@@ -3,10 +3,13 @@ $the_query = $args[0];
 ?>
 
 <li class="recipe-list-item">
-	<?php if (has_post_thumbnail()) : the_post_thumbnail('medium', array('class' => 'recipe-list-img')); ?>
-	<?php else: ?>
-		<img src="https://placehold.jp/bfbfbf/ffffff/600x750.jpg?text=No%20Photo" alt="" class="recipe-list-img" />
-	<?php endif; ?>
+	<div class="recipe-list-img-wrap">
+		<?php if (has_post_thumbnail()) : the_post_thumbnail('large', array('class' => 'recipe-list-img')); ?>
+		<?php else: ?>
+			<img src="https://placehold.jp/bfbfbf/ffffff/600x750.jpg?text=No%20Photo" alt="" class="recipe-list-img" />
+		<?php endif; ?>
+	</div>
+
 	<div class="recipe-list-info">
 		<?php
 		// カスタム投稿のカテゴリを取得するときはget_the_terms()を使う
@@ -22,7 +25,20 @@ $the_query = $args[0];
 			}
 		?>
 			<ul class="recipe-category">
-				<li><a href="<?php echo esc_url(home_url('/') . 'recipe_category/' . (empty($current_cat)) ? $cats[0]->slug : $current_cat->slug); ?>"><?php echo (empty($current_cat)) ? $cats[0]->name : $current_cat->name; ?></a></li>
+				<?php
+				$permalink = home_url('/').'recipe_category/';
+				$cat_name='';
+				if (empty($current_cat)) {
+					$permalink .= $cats[0]->slug;
+					$cat_name = $cats[0]->name;
+				} else {
+					$permalink .= $current_cat->slug;
+					$cat_name = $current_cat->name;
+				}
+				?>
+				<li>
+					<a href="<?php echo esc_url($permalink);?>"><?php echo $cat_name; ?></a>
+				</li>
 			</ul>
 		<?php endif; ?>
 		<h2 class="recipe-list-title"><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h2>

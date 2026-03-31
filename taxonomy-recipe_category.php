@@ -23,6 +23,7 @@
   <!-- Pagination -->
   <?php get_template_part('template-parts/pagination');    ?>
   <div class="button-wrapper">
-    <?php get_template_part('template-parts/linkbutton', '', array('home')); ?> </div>
+    <?php get_template_part('template-parts/linkbutton', '', array('home')); ?> 
+  </div>
 </main>
 <?php get_footer(); ?>
